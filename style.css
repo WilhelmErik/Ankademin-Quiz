@@ -31,12 +31,13 @@ body {
     background-color: rgb(250, 251, 252);
     color: rgb(57, 52, 52);
     transition: color, background-color 0.5s;
-    text-shadow: 1px 1px rgb(214, 161, 53);
-
+    text-shadow: 1px 1px rgba(149, 135, 108, 0.507);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
 }
 
 .darkmode {
-    background-color: rgb(61, 55, 55);
+    background-color: rgb(43, 38, 38);
     color: aliceblue;
     transition: color, background-color 0.5s;
 
