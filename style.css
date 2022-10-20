@@ -1,0 +1,44 @@
+#header {
+    border-width: 0 0 2px 0;
+    border-style: ridge;
+    text-align: center;
+
+
+
+}
+
+main {
+    margin-top: 200px;
+}
+
+ol,
+ul {
+    border: 2px ridge;
+}
+
+ul {
+    padding: 5px;
+    margin: 20px;
+}
+
+#darkmode {
+    float: right;
+    margin-top: 10px;
+}
+
+h1 {}
+
+body {
+    background-color: aliceblue;
+    color: rgb(57, 52, 52);
+    transition: color, background-color 0.5s;
+    text-shadow: 1px 1px rgb(93, 96, 93);
+
+}
+
+.darkmode {
+    background-color: rgb(61, 55, 55);
+    color: aliceblue;
+    transition: color, background-color 0.5s;
+
+}
