@@ -6,7 +6,7 @@ let monoQuestions = [
             opt1: "True",
             opt2: "False",
         },
-        answer: "False",
+        answer: ["False"],
         inputType: "radio"
     },
     {
@@ -16,7 +16,7 @@ let monoQuestions = [
             opt1: "True",
             opt2: "False"
         },
-        answer: "True",
+        answer: ["True"],
         inputType: "radio"
     },
     {
@@ -26,7 +26,7 @@ let monoQuestions = [
             opt1: "True",
             opt2: "False"
         },
-        answer: "True",
+        answer: ["True"],
         inputType: "radio"
     },
     {
@@ -36,7 +36,7 @@ let monoQuestions = [
             opt1: "True",
             opt2: "False"
         },
-        answer: "False",
+        answer: ["False"],
         inputType: "radio"
     },
     {
@@ -46,7 +46,7 @@ let monoQuestions = [
             opt1: "True",
             opt2: "False"
         },
-        answer: "True",
+        answer: ["True"],
         inputType: "radio"
     },
     {
@@ -56,7 +56,7 @@ let monoQuestions = [
             opt1: "True",
             opt2: "False"
         },
-        answer: "True",
+        answer: ["True"],
         inputType: "radio"
     },
     {
@@ -66,7 +66,7 @@ let monoQuestions = [
             opt1: "True",
             opt2: "False"
         },
-        answer: "False",
+        answer: ["False"],
         inputType: "radio"
     },
     {
@@ -76,7 +76,7 @@ let monoQuestions = [
             opt1: "True",
             opt2: "False"
         },
-        answer: "True",
+        answer: ["True"],
         inputType: "radio"
     },
     {
@@ -86,7 +86,7 @@ let monoQuestions = [
             opt1: "True",
             opt2: "False"
         },
-        answer: "False",
+        answer: ["False"],
         inputType: "radio"
     },
     {
@@ -96,7 +96,7 @@ let monoQuestions = [
             opt1: "True",
             opt2: "False"
         },
-        answer: "True",
+        answer: ["True"],
         inputType: "radio"
     },
     {
@@ -106,7 +106,7 @@ let monoQuestions = [
             opt1: "True",
             opt2: "False"
         },
-        answer: "True",
+        answer: ["True"],
         inputType: "radio"
     },
     {
@@ -116,7 +116,7 @@ let monoQuestions = [
             opt1: "True",
             opt2: "False"
         },
-        answer: "False",
+        answer: ["False"],
         inputType: "radio"
     },
     {
@@ -128,7 +128,7 @@ let monoQuestions = [
             opt3: "March 31, 1888",
             opt4: "March 31, 1889"
         },
-        answer: "March 31, 1889",
+        answer: ["March 31, 1889"],
         inputType: "checkbox"
     },
     {
@@ -140,7 +140,7 @@ let monoQuestions = [
             opt3: "Borås",
             opt4: "Malmö"
         },
-        answer: "March 31, 1889",
+        answer: ["Stockholm", "Örebro", "Malmö"],
         inputType: "checkbox"
     },
 ]
@@ -188,10 +188,24 @@ modeSwitch.addEventListener("click", () => {
 let showResults = document.getElementById("displayResults")
 let finalScore = document.getElementById("finalScore");
 
+function compareAnswers(checked, answers) {
+    if (checked.length === answers.length) {
+        console.log("lika lång")
+        return checked.every((element) => {
+            if (answers.includes(element)) {
+                return true;
+            }
+            return false;
+        })
+    }
+    return false;
+}
+
 let questionCounter = 1;
 function createForm(questions) {
 
     questions.forEach((quiz) => {
+
 
         let question = document.createElement("div");
         //question.className = "question"
@@ -232,9 +246,16 @@ function displayResult(questions) {
     let counter = 1;
     questions.forEach((quiz) => {
 
-        let userAnswer = document.querySelector("[name=Answer" + counter + "]:checked");
-        console.log(userAnswer)
-        if (quiz.answer.includes(userAnswer.value)) {
+        let userAnswer = document.querySelectorAll("[name=Answer" + counter + "]:checked");
+        let answerList = [];
+        userAnswer.forEach((answer) => {
+            answerList.push(answer.value);
+        })
+        console.log(answerList)
+        let isCorrect = compareAnswers(answerList, quiz.answer)
+        console.log(isCorrect)
+
+        if (isCorrect) {
             score++
             console.log("rätt")
             document.getElementById("question" + counter).style.color = "green";
