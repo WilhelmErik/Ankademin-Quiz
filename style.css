@@ -18,7 +18,11 @@ ol>li {
 }
 
 
-
+.option {
+    padding: 2px;
+    border-style: groove;
+    display: flex;
+}
 
 #darkmode {
     float: right;
