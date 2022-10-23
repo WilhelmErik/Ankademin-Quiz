@@ -1,4 +1,4 @@
-let monoQuestions = [
+let someQuestions = [
     {
         question: "The construction of the Eiffel tower was completed on March 31, 1887",
 
@@ -30,13 +30,15 @@ let monoQuestions = [
         inputType: "radio"
     },
     {
-        question: "Melbourne is the capital of Australia",
+        question: "What is the Capital of Australia",
 
         options: {
-            opt1: "True",
-            opt2: "False"
+            opt1: "Perth",
+            opt2: "Melbourne",
+            opt3: "Canberra",
+            opt4: "Sydney"
         },
-        answer: ["False"],
+        answer: ["Canberra"],
         inputType: "radio"
     },
     {
@@ -68,6 +70,18 @@ let monoQuestions = [
         },
         answer: ["False"],
         inputType: "radio"
+    },
+    {
+        question: "Which of the following are cities in New Zealand",
+
+        options: {
+            opt1: "Auckland",
+            opt2: "Wollongong",
+            opt3: "Launceston",
+            opt4: "Dunedin"
+        },
+        answer: ["Auckland", "Dunedin"],
+        inputType: "checkbox"
     },
     {
         question: "Google was initially called BackRub",
@@ -120,7 +134,7 @@ let monoQuestions = [
         inputType: "radio"
     },
     {
-        question: "When was theconstruction of the Eiffel tower completed",
+        question: "When was the construction of the Eiffel tower completed",
 
         options: {
             opt1: "March 31, 1886",
@@ -129,7 +143,7 @@ let monoQuestions = [
             opt4: "March 31, 1889"
         },
         answer: ["March 31, 1889"],
-        inputType: "checkbox"
+        inputType: "radio"
     },
     {
         question: "Which of the following are cities",
@@ -145,36 +159,6 @@ let monoQuestions = [
     },
 ]
 
-let multipleChoice1 = [
-    {
-        question: "When was theconstruction of the Eiffel tower completed",
-
-        options: {
-            opt1: "March 31, 1886",
-            opt2: "March 31, 1887",
-            opt3: "March 31, 1888",
-            opt4: "March 31, 1889"
-        },
-        answer: "March 31, 1889",
-        inputType: "checkbox"
-    },
-
-];
-
-let multipleChoice2 = [
-    {
-        question: "Which of the following are cities",
-
-        options: {
-            opt1: "Stockholm",
-            opt2: "Örebro",
-            opt3: "Borås",
-            opt4: "Malmö"
-        },
-        answer: "March 31, 1889",
-        inputType: "checkbox"
-    }
-];
 
 let darkness = false;
 let modeSwitch = document.getElementById("darkmode");
@@ -184,13 +168,13 @@ let quest = document.getElementById("questions");
 modeSwitch.addEventListener("click", () => {
     document.body.classList.toggle("darkmode");
 })
+//------------
 
 let showResults = document.getElementById("displayResults")
 let finalScore = document.getElementById("finalScore");
 
 function compareAnswers(checked, answers) {
     if (checked.length === answers.length) {
-        console.log("lika lång")
         return checked.every((element) => {
             if (answers.includes(element)) {
                 return true;
@@ -201,21 +185,23 @@ function compareAnswers(checked, answers) {
     return false;
 }
 
-let questionCounter = 1;
+let questionCounter = 1; //Keeps track on what question to print out 
+
 function createForm(questions) {
 
     questions.forEach((quiz) => {
 
-
         let question = document.createElement("div");
         //question.className = "question"
         question.id = "question" + questionCounter;
+        question.className = "question"
         question.innerHTML = ` <h4> Question ${questionCounter} </h4 >
            <p> ${quiz.question} </p>`
 
         quest.append(question);
         let inputType = quiz.inputType;
         let choice = document.createElement("div");
+        choice.className = "options"
         question.append(choice)
 
         for (opt in quiz.options) {
@@ -223,24 +209,14 @@ function createForm(questions) {
             choice.innerHTML += `
             <label class="option"> ${option}
         <input type="${inputType}" name="Answer${questionCounter}"
-            id="${option}${questionCounter}" value="${option}" checked >
+            id="${option}${questionCounter}" value="${option}"  >
         </label>`;
         }
         questionCounter++;
-
     })
-
 }
 
-createForm(monoQuestions, "radio");
-
-//createForm(multipleChoice1, "checkbox");
-
-//createForm(multipleChoice2, "checkbox");
-
-
-
-
+createForm(someQuestions, "radio");
 function displayResult(questions) {
     let score = 0;
     let counter = 1;
@@ -285,6 +261,6 @@ function displayResult(questions) {
 }
 
 showResults.addEventListener("click", () => {
-    displayResult(monoQuestions)
+    displayResult(someQuestions)
 
 })

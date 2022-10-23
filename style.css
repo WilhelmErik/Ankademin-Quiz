@@ -1,28 +1,94 @@
-#header {
-    border-width: 0 0 2px 0;
-    border-style: ridge;
+* {
+    display: flexbox;
     text-align: center;
+}
+
+#header {
+    padding: 20px;
 
 
+}
 
+.question {
+    border-style: groove;
+    border-width: 0px 0 2px 0;
+    padding: 2rem;
 }
 
 main {
     margin-top: 20px;
+    text-align: center;
+
+}
+
+#score {
+    padding: 1px 22px 1px 22px;
+    max-width: fit-content;
+    margin: auto;
+
 }
 
 ol>li {
+    text-align: center;
     border: 2px ridge;
     padding: 5px;
     margin-top: 2rem;
+    align-items: center;
 }
 
+
+div {
+    border-radius: 7px;
+    background: linear-gradient(145deg, #d4d4d4, #fbfbfb);
+    box-shadow: 8px 8px 16px #a2a2a2,
+        -8px -8px 16px #ffffff;
+
+
+}
+
+/* .darkmode div {
+    border-radius: 4px;
+    background: linear-gradient(315deg, #36303e, #40394a);
+    box-shadow: -5px -5px 10px #3b3444,
+        5px 5px 10px #3d3646;
+} */
+
+button {
+
+
+    font-size: larger;
+    padding: 10px;
+    border: #d4d4d4;
+
+    margin: 1rem;
+    border-radius: 7px;
+    background: linear-gradient(145deg, #d4d4d4, #fbfbfb);
+    box-shadow: 8px 8px 16px #a2a2a2,
+        -8px -8px 16px #ffffff;
+}
 
 .option {
-    padding: 2px;
-    border-style: groove;
-    display: flex;
+    margin: 1rem;
+    padding: 5px;
+    border-radius: 7px;
+    background: linear-gradient(145deg, #d4d4d4, #fbfbfb);
+    box-shadow: 8px 8px 16px #a2a2a2,
+        -8px -8px 16px #ffffff;
+    display: inline-block;
 }
+
+.options {
+    margin: 1rem;
+    padding: 5px;
+    border-radius: 15px;
+    background: inherit;
+    box-shadow: 8px 8px 16px #a2a2a2,
+        -8px -8px 16px #ffffff;
+    ;
+    display: inline-block;
+
+}
+
 
 #darkmode {
     float: right;
@@ -32,17 +98,44 @@ ol>li {
 h1 {}
 
 body {
-    background-color: rgb(250, 251, 252);
+    background-color: #ebebeb;
     color: rgb(57, 52, 52);
-    transition: color, background-color 0.5s;
-    text-shadow: 0px 0px rgba(149, 135, 108, 0.507);
-    font-family: 'Courier New', Courier, monospace;
+    transition: color, background-color 0.2s;
+    font-family: 'Dosis', sans-serif;
     font-size: larger;
+
+    margin: 1rem;
+    padding: 5px;
+
+    display: flexbox;
+
 }
 
-.darkmode {
-    background-color: rgb(43, 38, 38);
-    color: aliceblue;
-    transition: color, background-color 0.5s;
 
+
+.darkmode {
+    background-color: #28242d;
+    color: aliceblue;
+    transition: color, background-color 0.2s;
+
+
+
+
+}
+
+.darkmode label {
+    border-radius: 4px;
+    background: linear-gradient(315deg, #36303e, #40394a);
+    box-shadow: -5px -5px 10px #3b3444,
+        5px 5px 10px #3d3646;
+}
+
+.darkmode button {
+    margin: 1rem;
+    color: #d4d4d4;
+    border: #28242d;
+    border-radius: 4px;
+    background: #3c3545;
+    box-shadow: -5px -5px 10px #2a2530,
+        5px 5px 10px #4e455a;
 }
