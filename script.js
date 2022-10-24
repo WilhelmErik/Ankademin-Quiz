@@ -216,7 +216,8 @@ function createForm(questions) {
     })
 }
 
-createForm(someQuestions, "radio");
+createForm(someQuestions);
+
 function displayResult(questions) {
     let score = 0;
     let counter = 1;
