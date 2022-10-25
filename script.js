@@ -1,4 +1,4 @@
-let someQuestions = [
+let miscQuestions = [
     {
         question: "The construction of the Eiffel tower was completed on March 31, 1887",
 
@@ -160,9 +160,58 @@ let someQuestions = [
 ]
 
 
-let darkness = false;
+// let miscQuestions = [
+//     {
+//         question: " ",
+
+//         options: {
+//             opt1: " ",
+//             opt2: " ",
+//             opt3: " ",
+//             opt4: " "
+//         },
+//         answer: [" "],
+//         inputType: "checkbox"
+//     },
+// ];
+
+
+let historyQuestions = [
+
+];
+let geographyQuestions = [
+
+];
+let televisionQuestions = [
+
+];
+let computerQuestions = [
+
+];
+
 let modeSwitch = document.getElementById("darkmode");
 let quest = document.getElementById("questions");
+
+let questionTheme = document.querySelector("#selectedTheme")
+// let qTheme = "Misc";
+let qAmount = 1;
+
+// console.log(qTheme);
+
+let displayBtn = document.getElementById("displayQuestions");
+
+displayBtn.addEventListener("click", () => {
+    let qTheme = questionTheme.value;
+    console.log(qTheme);
+    let questionAmount = document.querySelector("#questionAmount").value;
+    qAmount = questionAmount
+    if (!qAmount) alert("Please choose amount of questions")
+    else {
+        console.log(qAmount)
+        createForm(miscQuestions, qAmount);
+    }
+
+})
 
 //----Darkmode button
 modeSwitch.addEventListener("click", () => {
@@ -185,65 +234,72 @@ function compareAnswers(checked, answers) {
     return false;
 }
 
-let questionCounter = 1; //Keeps track on what question to print out 
+//Keeps track on what question to print out 
 
-function createForm(questions) {
+function createForm(questions, amount) {
+    let questionCounter = 1;
+    quest.innerHTML = "";
 
     questions.forEach((quiz) => {
-
-        let question = document.createElement("div");
-        //question.className = "question"
-        question.id = "question" + questionCounter;
-        question.className = "question"
-        question.innerHTML = ` <h4> Question ${questionCounter} </h4 >
+        if (questionCounter <= amount) {
+            let question = document.createElement("div");
+            //question.className = "question"
+            question.id = "question" + questionCounter;
+            question.className = "question"
+            question.innerHTML = ` <h4> Question ${questionCounter} </h4 >
            <p> ${quiz.question} </p>`
 
-        quest.append(question);
-        let inputType = quiz.inputType;
-        let choice = document.createElement("div");
-        choice.className = "options"
-        question.append(choice)
+            quest.append(question);
+            let inputType = quiz.inputType;
+            let choice = document.createElement("div");
+            choice.className = "options"
+            question.append(choice)
 
-        for (opt in quiz.options) {
-            let option = quiz.options[opt];
-            choice.innerHTML += `
+            for (opt in quiz.options) {
+                let option = quiz.options[opt];
+                choice.innerHTML += `
             <label class="option"> ${option}
         <input type="${inputType}" name="Answer${questionCounter}"
             id="${option}${questionCounter}" value="${option}"  >
         </label>`;
+            }
+            questionCounter++;
+
         }
-        questionCounter++;
     })
+
+
 }
 
-createForm(someQuestions);
+
 
 function displayResult(questions) {
     let score = 0;
     let counter = 1;
     questions.forEach((quiz) => {
+        if (counter <= qAmount) {
+            let userAnswer = document.querySelectorAll("[name=Answer" + counter + "]:checked");
+            let answerList = [];
+            userAnswer.forEach((answer) => {
+                answerList.push(answer.value);
+            })
+            console.log(answerList)
+            let isCorrect = compareAnswers(answerList, quiz.answer)
+            console.log(isCorrect)
 
-        let userAnswer = document.querySelectorAll("[name=Answer" + counter + "]:checked");
-        let answerList = [];
-        userAnswer.forEach((answer) => {
-            answerList.push(answer.value);
-        })
-        console.log(answerList)
-        let isCorrect = compareAnswers(answerList, quiz.answer)
-        console.log(isCorrect)
+            if (isCorrect) {
+                score++
+                console.log("rätt")
+                document.getElementById("question" + counter).style.color = "green";
+            } else {
+                document.getElementById("question" + counter).style.color = "red";
+            }
 
-        if (isCorrect) {
-            score++
-            console.log("rätt")
-            document.getElementById("question" + counter).style.color = "green";
-        } else {
-            document.getElementById("question" + counter).style.color = "red";
+            console.log("ditt svar : " + userAnswer.value)
+            console.log("rätt svar är " + quiz.answer + "count" + counter)
+
+            counter++;
         }
-
-        console.log("ditt svar : " + userAnswer.value)
-        console.log("rätt svar är " + quiz.answer + "count" + counter)
-
-        counter++;
     })
     counter--
     finalScore.innerHTML = `Your score is : ${score} / ${counter}`;
@@ -262,6 +318,6 @@ function displayResult(questions) {
 }
 
 showResults.addEventListener("click", () => {
-    displayResult(someQuestions)
+    displayResult(miscQuestions)
 
 })
