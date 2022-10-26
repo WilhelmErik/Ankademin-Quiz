@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ankademin Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -18,12 +18,33 @@
         </header>
     </div>
     <main>
+
+        <div class="question-options">
+            <label for="questionAmount"> How many Questions would you like ?</label>
+            <input type="number" name="amount" id="questionAmount" placeholder="1-10" min="1" max="10">
+
+            <label for="SelectedTheme">Question theme</label>
+            <select name="" id="selectedTheme">
+                <!-- <option value="">Choose theme</option> -->
+                <option value="miscQ">Miscellaneous</option>
+                <option value="History">History</option>
+                <option value="Geography">Geography</option>
+                <option value="Computer">Computer</option>
+
+            </select>
+            <button id="displayQuestions">Show Questions</button>
+        </div>
+        <br><br><br>
+
+
+
         <div class="main">
             <div id="questions"></div>
         </div>
-        <button id="displayResults">Show Results</button>
+
+        <button id="displayResults" style="display: none;">Show Results</button>
         <div id="score">
-            <h2 id="finalScore"> Score</h2>
+            <h2 id="finalScore" style="visibility:hidden;"> Score</h2>
         </div>
     </main>
 
