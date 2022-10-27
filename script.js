@@ -1,6 +1,6 @@
-let miscQuestions = [
+const miscQuestions = [
     {
-        question: "Which of the following are cities",
+        question: "Which of the following are decent cities",
 
         options: {
             opt1: "Stockholm",
@@ -158,25 +158,9 @@ let miscQuestions = [
         inputType: "radio"
     },
 ]
+
 //------------------------------------------------------------------
-
-// let miscQuestions = [
-//     {
-//         question: " ",
-
-//         options: {
-//             opt1: " ",
-//             opt2: " ",
-//             opt3: " ",
-//             opt4: " "
-//         },
-//         answer: [" "],
-//         inputType: "checkbox"
-//     },
-// ];
-
-
-let historyQuestions = [
+const historyQuestions = [
     {
         question: 'Columbus was the first European to sail to the Americas',
 
@@ -296,8 +280,8 @@ let historyQuestions = [
 
 ];
 
-
-let geographyQuestions = [
+//------------------------------------------------------------------
+const geographyQuestions = [
     {
         question: 'Mexico is south of the Equator',
 
@@ -417,12 +401,8 @@ let geographyQuestions = [
 
 ];
 
-
-
-
-
 //------------------------------------------------------------------
-let computerQuestions = [
+const computerQuestions = [
     {
         question: 'What does the computer abbreviation "WWW" usually mean ? ',
 
@@ -546,23 +526,26 @@ let computerQuestions = [
 
 
 ];
+
 //------------------------------------------------------------------
 
-
 let modeSwitch = document.getElementById("darkmode");
+//------ Darkmode button ------
+modeSwitch.addEventListener("click", () => {
+    document.body.classList.toggle("darkmode");
+})
+
+//------------
 let quest = document.getElementById("questions");
 
 let questionTheme = document.querySelector("#selectedTheme")
-// let qTheme = "Misc";
 let qAmount = 1;
 let qTheme = "";
-// console.log(qTheme);
 
 let displayBtn = document.getElementById("displayQuestions");
 
 displayBtn.addEventListener("click", () => {
     qTheme = questionTheme.value;
-    console.log(qTheme);
     let questionAmount = document.querySelector("#questionAmount").value;
     qAmount = questionAmount
 
@@ -576,24 +559,19 @@ displayBtn.addEventListener("click", () => {
         qTheme = computerQuestions
     }
 
-    if (!qAmount) alert("Please choose amount of questions")
+    if (!qAmount || qAmount < 1) alert("Please choose a valid amount of questions")
     else {
         createForm(qTheme, qAmount);
-
         showResults.style.display = "initial";
-
     }
 })
 
-//----Darkmode button
-modeSwitch.addEventListener("click", () => {
-    document.body.classList.toggle("darkmode");
-})
-//------------
+
 
 let showResults = document.getElementById("displayResults")
 let finalScore = document.getElementById("finalScore");
 
+//--------- Function to compare answers and check if they are correct -----
 function compareAnswers(checked, answers) {
     if (checked.length === answers.length) {
         return checked.every((element) => {
@@ -605,9 +583,7 @@ function compareAnswers(checked, answers) {
     }
     return false;
 }
-
-//Keeps track on what question to print out 
-
+//------------------ Creates the form / questions --------------
 function createForm(questions, amount) {
     let questionCounter = 1;
     quest.innerHTML = "";
@@ -641,11 +617,8 @@ function createForm(questions, amount) {
         }
     })
 
-
 }
 
-
-let score = 0;
 function displayResult(questions) {
     score = 0;
     let counter = 1;
@@ -664,10 +637,11 @@ function displayResult(questions) {
                 score++
                 console.log("rätt")
                 document.getElementById("question" + counter).style.color = "green";
+
             } else {
                 document.getElementById("question" + counter).style.color = "red";
             }
-
+            
             console.log("ditt svar : " + userAnswer.value)
             console.log("rätt svar är " + quiz.answer + "count" + counter)
 
@@ -676,7 +650,6 @@ function displayResult(questions) {
     })
     counter--
     finalScore.innerHTML = `Your score is : ${score} / ${counter}`;
-
 
     if (score < counter * 0.5) {
         console.log("Underkänt")
@@ -688,8 +661,6 @@ function displayResult(questions) {
         console.log("Mycket Väl Godkänt")
         finalScore.style.color = "green";
     }
-
-
 }
 
 showResults.addEventListener("click", () => {
@@ -697,6 +668,4 @@ showResults.addEventListener("click", () => {
     finalScore.style.visibility = "visible";
     // document.body.scrollTop = 0;
     // document.documentElement.scrollTop = 0;
-
-
 })
