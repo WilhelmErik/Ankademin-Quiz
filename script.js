@@ -535,6 +535,9 @@ modeSwitch.addEventListener("click", () => {
     document.body.classList.toggle("darkmode");
 })
 
+
+let chosenArray = [];
+let rngOptions = [];
 //------------
 let quest = document.getElementById("questions");
 
@@ -561,7 +564,8 @@ displayBtn.addEventListener("click", () => {
 
     if (!qAmount || qAmount < 1) alert("Please choose a valid amount of questions")
     else {
-        createForm(qTheme, qAmount);
+        let rngQuestions = randomizeArr(qTheme);
+        createForm(rngQuestions, qAmount);
         showResults.style.display = "initial";
     }
 })
@@ -641,7 +645,7 @@ function displayResult(questions) {
             } else {
                 document.getElementById("question" + counter).style.color = "red";
             }
-            
+
             console.log("ditt svar : " + userAnswer.value)
             console.log("rätt svar är " + quiz.answer + "count" + counter)
 
@@ -666,6 +670,38 @@ function displayResult(questions) {
 showResults.addEventListener("click", () => {
     displayResult(qTheme)
     finalScore.style.visibility = "visible";
-    // document.body.scrollTop = 0;
-    // document.documentElement.scrollTop = 0;
 })
+
+
+//---------------Sticky Header -----------------
+window.onscroll = function () { stayTop() };
+
+let header = document.getElementById("header");
+let sticky = header.offsetTop;
+
+function stayTop() {
+    if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+    } else {
+        header.classList.remove("sticky");
+    }
+}
+
+
+
+
+function randomizeArr(arrayen) {
+    let random = arrayen.sort((x, y) => 0.5 - Math.random());
+    return random;
+    // return array.splice([Math.floor(Math.random() * array.length)],);
+}
+
+let idfk = randomizeArr(miscQuestions);
+
+// let randomize2 = map((element) => {
+//     let smth = [];
+//     array[0].push
+
+// })
+
+let testArray = [1, 2, 3, 4, 5, 6, 7, 8];

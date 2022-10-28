@@ -6,6 +6,30 @@
 
 }
 
+header {
+    background-color: #e4e2e8;
+    /* background: #e4e2e8;  */
+    /* max-width: inherit; */
+    padding: 20px;
+    border-radius: 7px;
+    box-shadow: 8px 8px 16px #0000007e,
+        -8px -8px 16px #a8a7a756;
+    z-index: auto;
+}
+
+.sticky+main {
+    padding-top: 130px;
+}
+
+.sticky {
+    z-index: 6;
+    top: 0;
+
+
+    position: fixed;
+    width: 100%;
+}
+
 select,
 option,
 input[type="number"],
@@ -58,16 +82,13 @@ select {
 
 
 h1 {
-    text-shadow: #d1c6e19a 2px 2px;
+    text-shadow: #d1c6e1 2px 2px;
 }
 
 
-#header {
-    max-width: inherit;
-    padding: 20px;
-    border-radius: 7px;
-    box-shadow: 8px 8px 16px #0000007e,
-        -8px -8px 16px #a8a7a756;
+
+header #darkmode {
+    margin-right: 5rem;
 }
 
 #header h1 {
@@ -135,6 +156,11 @@ ol>li {
 main div {
     margin-top: 15px;
     border-radius: 14px;
+}
+
+#darmode {
+    right: 50px;
+    margin: 50px;
 }
 
 button {
