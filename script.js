@@ -472,7 +472,7 @@ const computerQuestions = [
             opt3: "1056 Bytes",
             opt4: "1024 Bytes"
         },
-        answer: ["1000"],
+        answer: ["1000 Bytes"],
         inputType: "radio"
     },
     {
@@ -610,11 +610,11 @@ function createForm(questions, amount) {
 
             for (opt in quiz.options) {
                 let option = quiz.options[opt];
-                choice.innerHTML += `
+                choice.innerHTML += `<div class ="testdiv">
             <label class="option"> ${option}
         <input type="${inputType}" name="Answer${questionCounter}"
             id="${option}${questionCounter}" value="${option}"  >
-        </label>`;
+        </label> </div>` ;
             }
             questionCounter++;
 
@@ -622,7 +622,7 @@ function createForm(questions, amount) {
     })
 
 }
-
+//-----------------Calculates and displays the results of the quiz ---------------
 function displayResult(questions) {
     score = 0;
     let counter = 1;
@@ -673,7 +673,7 @@ showResults.addEventListener("click", () => {
 })
 
 
-//---------------Sticky Header -----------------
+//-------------------- Sticky Header -----------------
 window.onscroll = function () { stayTop() };
 
 let header = document.getElementById("header");
@@ -689,12 +689,15 @@ function stayTop() {
 
 
 
-
+//----------------------"Randomizes" an array-----------------------------
 function randomizeArr(arrayen) {
-    let random = arrayen.sort((x, y) => 0.5 - Math.random());
+    let random = arrayen.sort(() => 0.5 - Math.random());
     return random;
-    // return array.splice([Math.floor(Math.random() * array.length)],);
+
 }
+
+//------------------------------------------------------------------
+
 
 let idfk = randomizeArr(miscQuestions);
 

@@ -7,6 +7,9 @@
 }
 
 header {
+
+    text-align: center;
+    align-content: center;
     background-color: #e4e2e8;
     /* background: #e4e2e8;  */
     /* max-width: inherit; */
@@ -15,6 +18,10 @@ header {
     box-shadow: 8px 8px 16px #0000007e,
         -8px -8px 16px #a8a7a756;
     z-index: auto;
+}
+
+.darkmode header {
+    background-color: #120d1e
 }
 
 .sticky+main {
@@ -37,13 +44,28 @@ input[type="radio"],
 input[type="checkbox"] {
     background-color: #e4e2e8;
     font-size: medium;
-    width: 8rem;
+    width: 8em;
     height: 2rem;
     accent-color: rgba(81, 23, 239, 0.668);
     padding: 2px;
     margin-right: 1rem;
 }
 
+option.label {
+    display: flex;
+    align-items: center;
+    text-align: justify;
+}
+
+input[type="checkbox"] {
+    align-items: baseline;
+    align-content: center;
+    position: relative;
+    float: left;
+    width: 1.5rem;
+
+
+}
 
 input[type="number"] {
     color: #110f15;
@@ -52,6 +74,7 @@ input[type="number"] {
     background-color: inherit;
     box-shadow: inset 4px 4px 4px #6f6b78,
         inset -4px -4px 4px #fefafad7;
+
 
 }
 
@@ -82,6 +105,10 @@ select {
 
 
 h1 {
+    display: inline-flexbox;
+    width: 30%;
+    margin: auto;
+    align-self: center;
     text-shadow: #d1c6e1 2px 2px;
 }
 
@@ -96,6 +123,9 @@ header #darkmode {
 }
 
 .question {
+    align-content: center;
+    align-items: center;
+    max-width: 50%;
     letter-spacing: 0.1rem;
     border-width: 0px 0 2px 0;
     padding: 1rem;
@@ -105,9 +135,9 @@ header #darkmode {
     -webkit-backdrop-filter: blur(1.5px); */
     box-shadow: 2px 5px 5px 4px rgba(101, 98, 98, 0.181);
     /* border-radius: 12px;
-    
+
     align-content: center;
-   
+
     margin-top: 15px; */
     margin: auto;
     margin-top: 1rem;
@@ -125,7 +155,7 @@ header #darkmode {
     background-color: #f3f3f37a;
     opacity: 100%;
 
-    /* 
+    /*
     border-width: 1px 1px 1px 1px;
     border-style: groove;
     border-color: #c6c4c48d;
@@ -164,10 +194,11 @@ main div {
 }
 
 button {
+    display: inline-block;
     font-size: larger;
     padding: 10px;
     border: #d4d4d4;
-
+    margin: auto;
     border-radius: 7px;
     border-radius: 8px;
     background: inherit;
@@ -190,6 +221,10 @@ button:active {
 }
 
 .option {
+    display: inline-block;
+    max-block-size: 50px;
+    min-width: 40%;
+    max-width: 80%;
 
     margin: 1rem;
     padding: 5px;
@@ -197,11 +232,12 @@ button:active {
     background: linear-gradient(145deg, #d4d4d446, #fbfbfb3e);
     box-shadow: 2px 2px 4px #7b7979,
         -2px -2px 4px #ffffffac;
-    display: inline-block;
+
 }
 
 .option:hover {
     text-shadow: #ffffff85 0.2px 0.2px;
+    background-color: #a57df410;
 }
 
 .darkmode .question:hover {
@@ -235,7 +271,7 @@ body {
     background-color: #e4e2e8;
     /* background: rgb(172,174,255);
 background: linear-gradient(90deg, rgba(172,174,255,1) 0%, rgba(155,62,255,0.45227597875087533) 51%, rgba(250,200,190,0.922864214044993) 100%);
-    
+
     background-image:
         radial-gradient(at 40% 20%, hsla(266, 29%, 61%, 0.538) 0px, transparent 50%),
         radial-gradient(at 0% 100%, hsla(258, 43%, 79%, 0.61) 0px, transparent 50%),
@@ -250,10 +286,28 @@ background: linear-gradient(90deg, rgba(172,174,255,1) 0%, rgba(155,62,255,0.452
 
 }
 
+.testdiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 15px;
+    display: inline;
+
+
+}
+
+.testiv div :hover {
+    background: #0f0920;
+    background-color: #7619e7f5;
+}
+
 div.options {
-    margin: 1rem;
-    padding: 5px;
+
+    /* margin: 1rem;
+    padding: 5px; */
     border-radius: 7px;
+
+
 
 }
 
@@ -274,6 +328,10 @@ div.options {
 
 }
 
+label.option {
+    /* display: inline-block; */
+}
+
 .darkmode label {
     border-radius: 4px;
     background: linear-gradient(315deg, #2821307f, #18131e8d);
@@ -290,4 +348,48 @@ div.options {
     box-shadow: inset 4px 4px 8px #110f15,
         inset -4px -4px 8px #322d3e;
     ;
+}
+
+/* 1280px */
+@media screen and (max-width: 1080px) {
+    .option {
+        display: inline-block;
+
+        min-width: 50%;
+        max-width: 100%;
+
+        margin: 1rem;
+        padding: 5px;
+        border-radius: 7px;
+        background: linear-gradient(145deg, #d4d4d446, #fbfbfb3e);
+        box-shadow: 2px 2px 4px #7b7979,
+            -2px -2px 4px #ffffffac;
+
+    }
+
+    .question {
+        max-width: 100%;
+    }
+
+
+    .option label {
+
+        max-width: 90%;
+    }
+
+    .testdiv {
+        max-width: 90%;
+    }
+
+    .options div {
+        max-width: 90%;
+    }
+
+    .testdiv div {
+        max-width: 100%;
+    }
+
+    body {
+        background-color: rgb(222, 220, 225);
+    }
 }
